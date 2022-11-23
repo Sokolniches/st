@@ -1,0 +1,93 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Data.OleDb;
+
+namespace курсовая123     // Гудзенко Полина 3Б
+{
+    public partial class Form2 : Form
+    {
+        public static string connectString = "Provider = Microsoft.Jet.OLEDB.4.0;Data Source = baza2.mdb";
+        private OleDbConnection myConnection;
+        private readonly object bazaDataSet;
+
+        public Form2()
+        {
+            InitializeComponent();
+            myConnection = new OleDbConnection(connectString);
+            myConnection.Open();
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string kod = textBox1.Text;
+            int z1 = Convert.ToInt32(textBox2.Text);
+            int z2 = Convert.ToInt32(textBox3.Text);
+            int z3 = Convert.ToInt32(textBox4.Text);
+            int z4 = Convert.ToInt32(textBox5.Text);
+            //  int sum = z1 + z2 + z3;
+            // string o = Text;
+            //   switch (sum)
+            // {
+            //   case 0:
+            //     Console.WriteLine("неудовлетворительно");
+            //   break;
+            //             case 1:
+            //               Console.WriteLine("неудовлетворительно");
+            //             break;
+            //       case 2:
+            //         Console.WriteLine("неудовлетворительно");
+            //       break;
+            // case 3:
+            //                 Console.WriteLine("удовлетворительно");
+            //               break;
+            //         case 4:
+            //           Console.WriteLine("удовлетворительно");
+            //         break;
+            //   case 5:
+            //     Console.WriteLine("удовлетворительно");
+            //   break;
+            //               case 6:
+            //                 Console.WriteLine("хорошо");
+            //               break;
+            //         case 7:
+            //           Console.WriteLine("хорошо");
+            //         break;
+            //   case 8:
+            //     Console.WriteLine("хорошо");
+            //   break;
+            //               case 9:
+            //                 Console.WriteLine("отлично");
+            //               break;
+            //         case 10:
+            //           Console.WriteLine("отлично");
+            //         break;
+            //    }
+            string query = "INSERT INTO baza3 ([студента], [Программирование], [История], [Технология программирования], [Социология]) VALUES ('"+kod+"', " + z1 + ", " + z2 + "," + z3 + ", " + z4 + ")";
+            OleDbCommand command = new OleDbCommand(query, myConnection);
+            command.ExecuteNonQuery();
+            MessageBox.Show("Студент добавлен");
+        }
+         
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
