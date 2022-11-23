@@ -11,13 +11,13 @@ using System.Data.OleDb;
 
 namespace курсовая123     // Гудзенко Полина 3Б
 {
-    public partial class Form2 : Form
+    public partial class Adding_information_about_student_progress   //Добавление информации о успеваемости студентов
     {
-        public static string connectString = "Provider = Microsoft.Jet.OLEDB.4.0;Data Source = baza2.mdb";
+        public static string connectString = "Provider = Microsoft.Jet.OLEDB.4.0;Data Source = baza3.mdb";
         private OleDbConnection myConnection;
         private readonly object bazaDataSet;
 
-        public Form2()
+        public Form2()                                           //открытие формы 2
         {
             InitializeComponent();
             myConnection = new OleDbConnection(connectString);
@@ -29,7 +29,7 @@ namespace курсовая123     // Гудзенко Полина 3Б
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)             
         {
             string kod = textBox1.Text;
             int z1 = Convert.ToInt32(textBox2.Text);
@@ -75,19 +75,14 @@ namespace курсовая123     // Гудзенко Полина 3Б
             //         break;
             //    }
             string query = "INSERT INTO baza3 ([студента], [Программирование], [История], [Технология программирования], [Социология]) VALUES ('"+kod+"', " + z1 + ", " + z2 + "," + z3 + ", " + z4 + ")";
-            OleDbCommand command = new OleDbCommand(query, myConnection);
+            OleDbCommand command = new OleDbCommand(query, myConnection);       //процесс добавления данных студентов в базу данных
             command.ExecuteNonQuery();
             MessageBox.Show("Студент добавлен");
         }
          
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)             // закрытие второй формы
         {
             Close();
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

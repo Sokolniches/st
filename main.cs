@@ -11,7 +11,7 @@ using System.Data.OleDb;
 
 namespace курсовая123 //Гудзенко Полина 3Б
 {
-    public partial class Form1 : Form
+    public partial class Data_on_the_accounting_of_students_academic_performance  //Данные об учете успеваемости студентов
     {
         public static string connectString = "Provider = Microsoft.Jet.OLEDB.4.0;Data Source = baza3.mdb";
             private OleDbConnection myConnection;
@@ -24,7 +24,7 @@ namespace курсовая123 //Гудзенко Полина 3Б
             myConnection.Open();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e) //Подключение базы данных
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "baza3DataSet.baza3". При необходимости она может быть перемещена или удалена.
             this.baza3TableAdapter.Fill(this.baza3DataSet.baza3);
@@ -37,12 +37,12 @@ namespace курсовая123 //Гудзенко Полина 3Б
 
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e) //Закрытие программы
         {
             myConnection.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)                 // Октрытие второго окна 
         {
             Form2 f2 = new Form2();
             f2.Owner = this;
@@ -50,19 +50,19 @@ namespace курсовая123 //Гудзенко Полина 3Б
             
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)                  // Обновление таблицы после добавления данных
         {
             this.baza3TableAdapter.Fill(this.baza3DataSet.baza3);
         }
 
-        private void оРазработчикеToolStripMenuItem_Click(object sender, EventArgs e)
+        private void оРазработчикеToolStripMenuItem_Click(object sender, EventArgs e)        // Открытие третьей формы информации о разработчике
         {
             Form3 f3 = new Form3();
             f3.Owner = this;
             f3.Show();
         }
 
-        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        private void выходToolStripMenuItem_Click(object sender, EventArgs e)               //Кнопка закрытия программы
         {
             Close();
         }
@@ -74,12 +74,12 @@ namespace курсовая123 //Гудзенко Полина 3Б
             f2.Show();
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            Form4 f4 = new Form4();
-            f4.Owner = this;
-            f4.Show();
-        }
+       // private void button4_Click(object sender, EventArgs e)
+       // {
+         //   Form4 f4 = new Form4();
+           // f4.Owner = this;
+           // f4.Show();
+        //}
 
         private void обновитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -99,11 +99,6 @@ namespace курсовая123 //Гудзенко Полина 3Б
             OleDbCommand command = new OleDbCommand(query, myConnection);
             command.ExecuteNonQuery();
             MessageBox.Show("Данные о студенте удалены");
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
